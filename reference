@@ -1,0 +1,11 @@
+Reference src
+
+https://github.com/andrewjmead/node-course-v3-code
+
+>npm init
+
+//Creates a package.json & node_modules folder
+
+>npm i validator
+
+//installs validator file, adds to the package json and to the node_modules
