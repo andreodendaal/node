@@ -9,3 +9,6 @@ https://github.com/andrewjmead/node-course-v3-code
 >npm i validator
 
 //installs validator file, adds to the package json and to the node_modules
+
+// To Run, for the add function:
+>node app.js add --title="t" --body="b"

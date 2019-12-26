@@ -1,6 +1,11 @@
 const validator = require('validator')
 const chalk = require('chalk')
 const yargs = require('yargs')
+const notes = require('./notes.js')
+
+//
+// Customize yargs version
+yargs.version('1.1.0')
 
 yargs.command({
   command: 'add',
@@ -17,10 +22,11 @@ yargs.command({
       type: 'string'
     }
   },
-  handler: function (argv) {
-    console.log('Adding title: ' + argv.title)
-    console.log('Adding body: ' + argv.body)
-  }
+  handler(argv) {
+    console.log('Calling addNotes: ' + argv.title + ' ' + argv.body)
+    //notes.addNote(argv.title, argv.body)
+    notes.addNotes(argv.title, argv.body)
+     }
 });
 
 yargs.command({
@@ -46,6 +52,7 @@ yargs.command({
     console.log('Reading a note')
   }
 });
+
 yargs.parse()
 
 
