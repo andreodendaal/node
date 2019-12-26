@@ -19,6 +19,8 @@ const addNotes = (title, body) => {
         //If note does not exist, add note
         console.log('Adding Note.. ' + title +' to File: ' + fileName)
         saveNotes(notes, fileName)
+        console.log(chalk.inverse.green('Added Note.. ' + title +' to File: ' + fileName))
+
     } else {
         console.log(chalk.red.inverse('Note title taken!'))
     }
@@ -39,6 +41,28 @@ const saveNotes = (notes, fileName) => {
     const dataJSON = JSON.stringify(notes)
     fs.writeFileSync(fileName, dataJSON)
 }
+
+const removeNotes = (title) => {
+    console.log('Deleting Note: ' + title)
+    const fileName = 'notes.json'
+    const notes = getNotes(fileName)
+    const adjustedNotes = notes.filter((note) => note.title != title)
+    if (notes.length > adjustedNotes.length) {
+
+        saveNotes(adjustedNotes, fileName)
+        console.log(chalk.inverse.green('Deleted Note: ' + title + ', from File: ' + fileName))
+    } else {
+        console.log(chalk.inverse.red('Note: ' + title + ', not Found'))
+    }
+}
+const listNotes = () => {
+    const fileName = 'notes.json'
+    const notes = getNotes(fileName)
+    console.log(notes)
+}
+
 module.exports = {
-    addNotes: addNotes
+    addNotes: addNotes,
+    listNotes: listNotes,
+    removeNotes: removeNotes
 }

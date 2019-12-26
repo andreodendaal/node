@@ -34,14 +34,19 @@ yargs.command({
   describe: 'Remove a note',
   handler: function () {
     console.log('Removing the note')
+  },
+  handler(argv) {
+    console.log('Calling removeNotes: ' + argv.title)
+    notes.removeNotes(argv.title)
   }
 });
 
 yargs.command({
   command: 'list',
   describe: 'Listing Notes',
-  handler: function () {
-    console.log('Listing notes')
+  handler(argv) {
+    console.log('Getting Notes...')
+    notes.listNotes(argv.title)
   }
 });
 
