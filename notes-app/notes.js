@@ -11,6 +11,7 @@ const addNotes = (title, body) => {
     const notes = getNotes(fileName)
 
     const duplicateNote = notes.find((note) => { return note.title === title })
+
     if (!duplicateNote) {
         notes.push(
         {title: title,
